@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>headerlink}}
+
+<body>
+    {{>navbar}}
+    <!-- main header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form">
+                        <input type="text" id="cityName" placeholder="Enter city name" autocomplete="off">
+                        <input type="submit" id="submitBtn" value="search">
+                    </form>
+                </div>
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <p id="day">Wednesday</p>
+                        <p id="today_data">13 OCT</p>
+                    </div>
+                    <div class="main_layer">
+                        <p id="city_name">Get output</p>
+
+                        <div class="middle_layer data_hide">
+                            <p id="temp"><span id="temp_real">0</span><sup>o</sup>C</p>
+                            <p id="temp_status"><i class="fa-solid fa-cloud" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- creating footer -->
+    {{>footer}}
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        const currDay = () => {
+            var weekDay = [
+                "sun",
+                "mon",
+                "tue",
+                "wed",
+                "thur",
+                "fri",
+                "sat"
+
+            ];
+
+            let currDay = new Date();
+
+            let days = weekDay[currDay.getDay()];
+            let day = document.getElementById("day");
+            day.innerText = days;
+        }
+        currDay();
+        const currMonth = () => {
+            var currMonth = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec"
+
+            ];
+            var now = new Date();
+            var month = currMonth[now.getMonth()];
+            var day = now.getDate();
+
+
+            return `${month} ${day} `;
+
+        }
+        today_data.innerHTML = currMonth();
+    </script>
+</body>
+
+</html>
